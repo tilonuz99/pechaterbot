@@ -33,7 +33,7 @@ def stil():
     markup.row_width = 5
     btn_list = []
     for i in range(1,51):
-        btn_list.append(InlineKeyboardButton(i,callback_data="style"+str(i)))
+        btn_list.append(InlineKeyboardButton(i,callback_data="stile"+str(i)))
     btn_list = list(split_list(btn_list, 5))
     for b in btn_list:
         markup.add(*b)
@@ -168,19 +168,14 @@ def callback_query(call):
 		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=colours())
 		with open(str(chat_id)+'color.txt','w') as yoz:
 			yoz.write(rangi)
-	elif call.data == "style1":
-		style(call,pos,"1.ttf",matn,rangi,int(hajmi))
+	elif "stile" in call.data:
+                stile = call.data.replace("stile","")
+		style(call,pos,str(stile)+".ttf",matn,rangi,int(hajmi))
 		image = open(str(chat_id)+'water.jpg', 'rb')
 		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=stil())
 		
 		with open(str(chat_id)+'font.txt','w') as yoz:
-			yoz.write("1.ttf")
-	elif call.data == "style2":
-		style(call,pos,"2.ttf",matn,rangi,int(hajmi))
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=stil())
-		with open(str(chat_id)+'font.txt','w') as yoz:
-			yoz.write("2.ttf")
+			yoz.write(str(stile)+".ttf")
 	elif call.data == "tepa_ong":
 		tepa_ong(call,matn,styl,int(hajmi),rangi)
 		image = open(str(chat_id)+'water.jpg', 'rb')
