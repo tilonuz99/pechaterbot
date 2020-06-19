@@ -40,8 +40,7 @@ def stil():
     return markup
 def split_list(lst, n):
     for i in range(0, len(lst), n):
-        yield lst[i:i + n]        
-    return markup
+        yield lst[i:i + n]
 def rasm():
 	markup = InlineKeyboardMarkup()
 	markup.row_width = 2
