@@ -32,7 +32,7 @@ def rangla(mes,matn,styl,rang,size,position):
 		y = Height-text_h-5
 	elif position == "past_ong":
 		x = Width-text_w-5
-		y = Height-text_h-10-5
+		y = Height-text_h-5
 	draw.text((x,y), str(matn), fill=rang,font=font)
 	ok = im.save(str(chat_id)+'water.jpg', "JPEG")
 	if ok:
