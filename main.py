@@ -30,11 +30,16 @@ def colours():
 	return markup
 def stil():
     markup = InlineKeyboardMarkup()
-    markup.row_width = 5
-    btnljst = []
-    for z in range(1,26):
-        btnljst.append(markup.add(InlineKeyboardButton(str(z),callback_data="stile{0}".format(z))))
-        
+    btn_list = []
+    for i in range(1,25):
+        btn_list.append(InlineKeyboardButton(i,callback_data="style"+str(i)))
+    btn_list = list(split_list(btn_list, 5))
+    for b in btn_list:
+        markup.add(*b)
+    return markup
+def split_list(lst, n):
+    for i in range(0, len(lst), n):
+        yield lst[i:i + n]        
     return markup
 def rasm():
 	markup = InlineKeyboardMarkup()
