@@ -25,7 +25,7 @@ def rangla(mes,matn,styl,rang,size,position):
 		x = (Width-text_w)
 		y = (Height-text_h)/2
 	elif position == "past_chap":
-		x = Width-text_w-5
+		x = 0-5
 		y = Height-text_h-5
 	elif position == "past":
 		x = (Width-text_w)/2-5
