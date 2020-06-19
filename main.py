@@ -112,7 +112,7 @@ def added(mes):
 		im = Image.open(str(mes.from_user.id)+".jpg")
 		Width,Height = im.size
 		draw = ImageDraw.Draw(im)
-		font = ImageFont.truetype("1.ttf", 100)
+		font = ImageFont.truetype(" 1.ttf", 100)
 		text_w, text_h = draw.textsize(str(matn),font=font)
 		x = (Width-text_w)/2
 		y = (Height-text_h)/2
