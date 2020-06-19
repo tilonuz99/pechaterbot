@@ -1,3 +1,4 @@
+import os
 import telebot
 from telebot import  types
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -124,10 +125,10 @@ def added(mes):
 @bot.callback_query_handler(func=lambda call: True)
 def callback_query(call):
 	chat_id = str(call.message.chat.id)
-        if os.path.exists(str(call.message.chat.id)+'.txt'):
+	if os.path.exists(str(call.message.chat.id)+'.txt'):
 	    t = open(str(call.message.chat.id)+'.txt','r')
-        else:
-            bot.reply_to(call.message,"Iltimos qayta /start buyrug'ini yuboring")
+	else:
+		bot.reply_to(call.message,"Iltimos qayta /start buyrug'ini yuboring")
 	styl = open(str(call.message.chat.id)+'font.txt').read()
 	ok = User(str(t.read()))
 	user_dict[chat_id] = ok
