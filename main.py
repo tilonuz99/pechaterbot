@@ -6,7 +6,7 @@ from position import  *
 from style import *
 from ranglar import *
 from fontsize import *
-API_TOKEN = '1106274039:AAHxon8R_JqwHL9zkmlYULgr_NIz3Pkv90U'
+API_TOKEN = '1106274039:AAGMGgROr8O4Wr0BeIBx1qO55p79QaG92L8'
 bot = telebot.TeleBot(API_TOKEN)
 class User:
     def __init__(self, matn):
@@ -32,7 +32,7 @@ def stil():
     markup = InlineKeyboardMarkup()
     markup.row_width = 5
     btn_list = []
-    for i in range(1,51):
+    for i in range(1,41):
         btn_list.append(InlineKeyboardButton(i,callback_data="stile"+str(i)))
     btn_list = list(split_list(btn_list, 5))
     for b in btn_list:
