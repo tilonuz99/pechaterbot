@@ -176,7 +176,7 @@ def callback_query(call):
 		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=stil())
 		
 		with open(str(chat_id)+'font.txt','w') as yoz:
-			yoz.write(str(stile)+".ttf")
+			yoz.write(" "+str(stile)+".ttf")
 	elif call.data == "tepa_ong":
 		tepa_ong(call,matn,styl,int(hajmi),rangi)
 		image = open(str(chat_id)+'water.jpg', 'rb')
