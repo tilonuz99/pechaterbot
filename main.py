@@ -37,6 +37,7 @@ def stil():
     btn_list = list(split_list(btn_list, 5))
     for b in btn_list:
         markup.add(*b)
+    markup.add(InlineKeyboardButton("↩️Qaytish.",callback_data="home"))
     return markup
 def split_list(lst, n):
     for i in range(0, len(lst), n):
