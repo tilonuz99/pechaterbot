@@ -29,11 +29,11 @@ def colours():
 	markup.add(InlineKeyboardButton("↩️Qaytish.",callback_data="home"))
 	return markup
 def stil():
-	markup = InlineKeyboardMarkup()
-	markup.row_width = 2
-	markup.add(InlineKeyboardButton("1",callback_data="style1"),InlineKeyboardButton("2",callback_data="style2"))
-	markup.add(InlineKeyboardButton("↩️Qaytish.",callback_data="home"))
-	return markup
+    markup = InlineKeyboardMarkup()
+    markup.row_width = 5
+    for i in range(1, 26):
+        markup.insert(InlineKeyboardButton(str(i),callback_data="stile{0}".format(i)))
+    return markup
 def rasm():
 	markup = InlineKeyboardMarkup()
 	markup.row_width = 2
