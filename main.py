@@ -80,7 +80,7 @@ def getphoto(mes):
 		matnturi = "font.txt"
 		yozish = chat_id + matnturi
 		with open(yozish,'w') as yoz:
-			yoz.write("1.ttf")
+			yoz.write(" 1.ttf")
 		matnrangi = "color.txt"
 		yozish = chat_id + matnrangi
 		with open(yozish,'w') as yoz:
@@ -124,7 +124,10 @@ def added(mes):
 @bot.callback_query_handler(func=lambda call: True)
 def callback_query(call):
 	chat_id = str(call.message.chat.id)
-	t = open(str(call.message.chat.id)+'.txt','r')
+        if os.path.exists(str(call.message.chat.id)+'.txt'):
+	    t = open(str(call.message.chat.id)+'.txt','r')
+        else:
+            bot.reply_to(call.message,"Iltimos qayta /start buyrug'ini yuboring")
 	styl = open(str(call.message.chat.id)+'font.txt').read()
 	ok = User(str(t.read()))
 	user_dict[chat_id] = ok
