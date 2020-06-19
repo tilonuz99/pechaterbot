@@ -31,9 +31,11 @@ def colours():
 def stil():
     markup = InlineKeyboardMarkup()
     markup.row_width = 5
-    i = []
     for i in range(1,26):
-        markup.add(InlineKeyboardButton(str(i),callback_data="stile{0}".format(i)))
+        for a in range(5):
+            z = a
+        markup.add(InlineKeyboardButton(str(z),callback_data="stile{0}".format(z)))
+        
     return markup
 def rasm():
 	markup = InlineKeyboardMarkup()
