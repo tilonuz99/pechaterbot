@@ -30,6 +30,7 @@ def colours():
 	return markup
 def stil():
     markup = InlineKeyboardMarkup()
+    markup.row_width = 5
     btn_list = []
     for i in range(1,25):
         btn_list.append(InlineKeyboardButton(i,callback_data="style"+str(i)))
