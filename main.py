@@ -32,7 +32,7 @@ def stil():
     markup = InlineKeyboardMarkup()
     markup.row_width = 5
     btn_list = []
-    for i in range(1,25):
+    for i in range(1,51):
         btn_list.append(InlineKeyboardButton(i,callback_data="style"+str(i)))
     btn_list = list(split_list(btn_list, 5))
     for b in btn_list:
