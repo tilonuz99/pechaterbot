@@ -217,7 +217,7 @@ def callback_query(call):
 		orta(call,matn,styl,int(hajmi),rangi)
 		image = open(str(chat_id)+'water.jpg', 'rb')
 		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
-                formati = "position.txt"
+		formati = "position.txt"
 		yozish = chat_id + formati
 		with open(yozish,'w') as yoz:
 			yoz.write(call.data)
