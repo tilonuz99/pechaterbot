@@ -169,7 +169,7 @@ def callback_query(call):
 		with open(str(chat_id)+'color.txt','w') as yoz:
 			yoz.write(rangi)
 	elif "stile" in call.data:
-                stile = call.data.replace("stile","")
+		stile = call.data.replace("stile","")
 		style(call,pos,str(stile)+".ttf",matn,rangi,int(hajmi))
 		image = open(str(chat_id)+'water.jpg', 'rb')
 		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=stil())
