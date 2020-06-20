@@ -7,7 +7,7 @@ from position import  *
 from style import *
 from ranglar import *
 from fontsize import *
-API_TOKEN = '1106274039:AAGMGgROr8O4Wr0BeIBx1qO55p79QaG92L8'
+API_TOKEN = '1106274039:AAHNqRKbHcU40xWViCABZ8kvbYBew06g6cI'
 bot = telebot.TeleBot(API_TOKEN)
 class User:
     def __init__(self, matn):
