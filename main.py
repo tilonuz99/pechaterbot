@@ -26,9 +26,7 @@ def textsize(hajmi):
 def colours():
 	markup = InlineKeyboardMarkup()
 	markup.row_width = 3
-	markup.add(InlineKeyboardButton("⚪️",callback_data="rangwhite"),InlineKeyboardButton("⚫️",callback_data="rangblack"))
-	markup.add(InlineKeyboardButton("↩️Qaytish.",callback_data="home"))
-	return markup
+	markup.add(InlineKeyboardButton("⚪️",callback_data="rangwhite"),InlineKeyboardButton("⚫️",callback_data="rangblack"),InlineKeyboardButton("🔴",callback_data="rangred"),InlineKeyboardButton("🟢",callback_data="ranggreen"),InlineKeyboardButton("🔵",callback_data="rangblue"),InlineKeyboardButton("🟡",callback_data="rangyellow"))
 def stil():
     markup = InlineKeyboardMarkup()
     markup.row_width = 5
