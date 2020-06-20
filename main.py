@@ -93,7 +93,7 @@ def getphoto(mes):
 			
 		bot.register_next_step_handler(mes, added)
 	else:
-		msg=bot.reply_to(mes,"Bunday buyruq mavjud emas.")
+		msg=bot.reply_to(mes,"Rasimingizni yuboring.")
 		bot.register_next_step_handler(msg, getphoto)
 		
 def added(mes):
