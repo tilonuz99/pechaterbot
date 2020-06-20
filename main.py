@@ -129,7 +129,6 @@ def callback_query(call):
 	    t = open(str(call.message.chat.id)+'.txt','r')
 	else:
 		bot.reply_to(call.message,"Iltimos qayta /start buyrug'ini yuboring")
-	styl = open(str(call.message.chat.id)+'font.txt').read()
 	ok = User(str(t.read()))
 	user_dict[chat_id] = ok
 	user = user_dict[chat_id]
@@ -182,7 +181,7 @@ def callback_query(call):
 		with open(str(chat_id)+'font.txt','w') as yoz:
 			yoz.write(" "+str(stile)+".ttf")
 	elif call.data == "tepa_ong":
-		tepa_ong(call,matn,styl,int(hajmi),rangi)
+		tepa_ong(call,matn,turi,int(hajmi),rangi)
 		image = open(str(chat_id)+'water.jpg', 'rb')
 		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
 		formati = "position.txt"
@@ -190,7 +189,7 @@ def callback_query(call):
 		with open(yozish,'w') as yoz:
 			yoz.write(call.data)
 	elif call.data == "tepa_chap":
-		tepa_chap(call,matn,styl,int(hajmi),rangi)
+		tepa_chap(call,matn,turi,int(hajmi),rangi)
 		image = open(str(chat_id)+'water.jpg', 'rb')
 		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
 		formati = "position.txt"
@@ -198,7 +197,7 @@ def callback_query(call):
 		with open(yozish,'w') as yoz:
 			yoz.write(call.data)
 	elif call.data == "tepa":
-		tepa(call,matn,styl,int(hajmi),rangi)
+		tepa(call,matn,turi,int(hajmi),rangi)
 		image = open(str(chat_id)+'water.jpg', 'rb')
 		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
 		formati = "position.txt"
@@ -206,7 +205,7 @@ def callback_query(call):
 		with open(yozish,'w') as yoz:
 			yoz.write(call.data)
 	elif call.data == "orta_chap":
-		orta_chap(call,matn,styl,int(hajmi),rangi)
+		orta_chap(call,matn,turi,int(hajmi),rangi)
 		image = open(str(chat_id)+'water.jpg', 'rb')
 		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
 		formati = "position.txt"
@@ -214,7 +213,7 @@ def callback_query(call):
 		with open(yozish,'w') as yoz:
 			yoz.write(call.data)
 	elif call.data == "orta":
-		orta(call,matn,styl,int(hajmi),rangi)
+		orta(call,matn,turi,int(hajmi),rangi)
 		image = open(str(chat_id)+'water.jpg', 'rb')
 		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
 		formati = "position.txt"
@@ -222,7 +221,7 @@ def callback_query(call):
 		with open(yozish,'w') as yoz:
 			yoz.write(call.data)
 	elif call.data == "orta_ong":
-		orta_ong(call,matn,styl,int(hajmi),rangi)
+		orta_ong(call,matn,turi,int(hajmi),rangi)
 		image = open(str(chat_id)+'water.jpg', 'rb')
 		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
 		formati = "position.txt"
@@ -230,7 +229,7 @@ def callback_query(call):
 		with open(yozish,'w') as yoz:
 			yoz.write(call.data)
 	elif call.data == "past_chap":
-		past_chap(call,matn,styl,int(hajmi),rangi)
+		past_chap(call,matn,turi,int(hajmi),rangi)
 		image = open(str(chat_id)+'water.jpg', 'rb')
 		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
 		formati = "position.txt"
@@ -238,7 +237,7 @@ def callback_query(call):
 		with open(yozish,'w') as yoz:
 			yoz.write(call.data)
 	elif call.data == "past":
-		past(call,matn,styl,int(hajmi),rangi)
+		past(call,matn,turi,int(hajmi),rangi)
 		image = open(str(chat_id)+'water.jpg', 'rb')
 		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
 		formati = "position.txt"
@@ -246,7 +245,7 @@ def callback_query(call):
 		with open(yozish,'w') as yoz:
 			yoz.write(call.data)
 	elif call.data == "past_ong":
-		past_ong(call,matn,styl,int(hajmi),rangi)
+		past_ong(call,matn,turi,int(hajmi),rangi)
 		image = open(str(chat_id)+'water.jpg', 'rb')
 		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
 		formati = "position.txt"
