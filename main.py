@@ -124,137 +124,140 @@ def added(mes):
 		bot.register_next_step_handler(msg, added)
 @bot.callback_query_handler(func=lambda call: True)
 def callback_query(call):
-	chat_id = str(call.message.chat.id)
-	if os.path.exists(str(call.message.chat.id)+'.txt'):
-	    t = open(str(call.message.chat.id)+'.txt','r')
-	else:
-		bot.reply_to(call.message,"Iltimos qayta /start buyrug'ini yuboring")
-	ok = User(str(t.read()))
-	user_dict[chat_id] = ok
-	user = user_dict[chat_id]
-	matn = user.matn
-	pos = getfayl(call,"position")
-	turi = getfayl(call,"font")
-	hajmi = getfayl(call,"size")
-	rangi = getfayl(call,"color")
-	if call.data == "position":
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
-	elif call.data == "style":
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=stil())
-	elif call.data == "color":
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=colours())
-	elif call.data == "size":
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=textsize(int(hajmi)))
-	elif "minus" in call.data:
-		xajmi = call.data.replace("minus","")
-		xajmi = int(xajmi) -5
-		fontsize(call,pos,turi,matn,rangi,int(xajmi))
-		with open(str(chat_id)+'size.txt','w') as yoz:
-			yoz.write(str(xajmi))
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=textsize(int(hajmi)-5))
-	elif "plus" in call.data:
-		xajmi = call.data.replace("plus","")
-		xajmi = int(xajmi) + 5
-		fontsize(call,pos,turi,matn,rangi,int(xajmi))
-		with open(str(chat_id)+'size.txt','w') as yoz:
-			yoz.write(str(xajmi))
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=textsize(int(hajmi)+5))
-	elif "rang" in call.data:
-		rangi = call.data.replace('rang','')
-		rangla(call,matn,turi,rangi,int(hajmi),pos)
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=colours())
-		with open(str(chat_id)+'color.txt','w') as yoz:
-			yoz.write(rangi)
-	elif "stile" in call.data:
-		stile = call.data.replace("stile","")
-		style(call,pos," "+str(stile)+".ttf",matn,rangi,int(hajmi))
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=stil())
-		
-		with open(str(chat_id)+'font.txt','w') as yoz:
-			yoz.write(" "+str(stile)+".ttf")
-	elif call.data == "tepa_ong":
-		tepa_ong(call,matn,turi,int(hajmi),rangi)
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
-		formati = "position.txt"
-		yozish = chat_id + formati
-		with open(yozish,'w') as yoz:
-			yoz.write(call.data)
-	elif call.data == "tepa_chap":
-		tepa_chap(call,matn,turi,int(hajmi),rangi)
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
-		formati = "position.txt"
-		yozish = chat_id + formati
-		with open(yozish,'w') as yoz:
-			yoz.write(call.data)
-	elif call.data == "tepa":
-		tepa(call,matn,turi,int(hajmi),rangi)
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
-		formati = "position.txt"
-		yozish = chat_id + formati
-		with open(yozish,'w') as yoz:
-			yoz.write(call.data)
-	elif call.data == "orta_chap":
-		orta_chap(call,matn,turi,int(hajmi),rangi)
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
-		formati = "position.txt"
-		yozish = chat_id + formati
-		with open(yozish,'w') as yoz:
-			yoz.write(call.data)
-	elif call.data == "orta":
-		orta(call,matn,turi,int(hajmi),rangi)
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
-		formati = "position.txt"
-		yozish = chat_id + formati
-		with open(yozish,'w') as yoz:
-			yoz.write(call.data)
-	elif call.data == "orta_ong":
-		orta_ong(call,matn,turi,int(hajmi),rangi)
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
-		formati = "position.txt"
-		yozish = chat_id + formati
-		with open(yozish,'w') as yoz:
-			yoz.write(call.data)
-	elif call.data == "past_chap":
-		past_chap(call,matn,turi,int(hajmi),rangi)
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
-		formati = "position.txt"
-		yozish = chat_id + formati
-		with open(yozish,'w') as yoz:
-			yoz.write(call.data)
-	elif call.data == "past":
-		past(call,matn,turi,int(hajmi),rangi)
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
-		formati = "position.txt"
-		yozish = chat_id + formati
-		with open(yozish,'w') as yoz:
-			yoz.write(call.data)
-	elif call.data == "past_ong":
-		past_ong(call,matn,turi,int(hajmi),rangi)
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
-		formati = "position.txt"
-		yozish = chat_id + formati
-		with open(yozish,'w') as yoz:
-			yoz.write(call.data)
-	elif call.data == "home":
-		image = open(str(chat_id)+'water.jpg', 'rb')
-		bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=rasm())
+	try:
+		chat_id = str(call.message.chat.id)
+		if os.path.exists(str(call.message.chat.id)+'.txt'):
+		    t = open(str(call.message.chat.id)+'.txt','r')
+		    ok = User(str(t.read()))
+		    user_dict[chat_id] = ok
+		    user = user_dict[chat_id]
+		    matn = user.matn
+		else:
+			bot.reply_to(call.message,"Iltimos qayta /start buyrug'ini yuboring")
+		pos = getfayl(call,"position")
+		turi = getfayl(call,"font")
+		hajmi = getfayl(call,"size")
+		rangi = getfayl(call,"color")
+		if call.data == "position":
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
+		elif call.data == "style":
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=stil())
+		elif call.data == "color":
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=colours())
+		elif call.data == "size":
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=textsize(int(hajmi)))
+		elif "minus" in call.data:
+			xajmi = call.data.replace("minus","")
+			xajmi = int(xajmi) -5
+			fontsize(call,pos,turi,matn,rangi,int(xajmi))
+			with open(str(chat_id)+'size.txt','w') as yoz:
+				yoz.write(str(xajmi))
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=textsize(int(hajmi)-5))
+		elif "plus" in call.data:
+			xajmi = call.data.replace("plus","")
+			xajmi = int(xajmi) + 5
+			fontsize(call,pos,turi,matn,rangi,int(xajmi))
+			with open(str(chat_id)+'size.txt','w') as yoz:
+				yoz.write(str(xajmi))
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=textsize(int(hajmi)+5))
+		elif "rang" in call.data:
+			rangi = call.data.replace('rang','')
+			rangla(call,matn,turi,rangi,int(hajmi),pos)
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=colours())
+			with open(str(chat_id)+'color.txt','w') as yoz:
+				yoz.write(rangi)
+		elif "stile" in call.data:
+			stile = call.data.replace("stile","")
+			style(call,pos," "+str(stile)+".ttf",matn,rangi,int(hajmi))
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=stil())
+			
+			with open(str(chat_id)+'font.txt','w') as yoz:
+				yoz.write(" "+str(stile)+".ttf")
+		elif call.data == "tepa_ong":
+			tepa_ong(call,matn,turi,int(hajmi),rangi)
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
+			formati = "position.txt"
+			yozish = chat_id + formati
+			with open(yozish,'w') as yoz:
+				yoz.write(call.data)
+		elif call.data == "tepa_chap":
+			tepa_chap(call,matn,turi,int(hajmi),rangi)
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
+			formati = "position.txt"
+			yozish = chat_id + formati
+			with open(yozish,'w') as yoz:
+				yoz.write(call.data)
+		elif call.data == "tepa":
+			tepa(call,matn,turi,int(hajmi),rangi)
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
+			formati = "position.txt"
+			yozish = chat_id + formati
+			with open(yozish,'w') as yoz:
+				yoz.write(call.data)
+		elif call.data == "orta_chap":
+			orta_chap(call,matn,turi,int(hajmi),rangi)
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
+			formati = "position.txt"
+			yozish = chat_id + formati
+			with open(yozish,'w') as yoz:
+				yoz.write(call.data)
+		elif call.data == "orta":
+			orta(call,matn,turi,int(hajmi),rangi)
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
+			formati = "position.txt"
+			yozish = chat_id + formati
+			with open(yozish,'w') as yoz:
+				yoz.write(call.data)
+		elif call.data == "orta_ong":
+			orta_ong(call,matn,turi,int(hajmi),rangi)
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
+			formati = "position.txt"
+			yozish = chat_id + formati
+			with open(yozish,'w') as yoz:
+				yoz.write(call.data)
+		elif call.data == "past_chap":
+			past_chap(call,matn,turi,int(hajmi),rangi)
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
+			formati = "position.txt"
+			yozish = chat_id + formati
+			with open(yozish,'w') as yoz:
+				yoz.write(call.data)
+		elif call.data == "past":
+			past(call,matn,turi,int(hajmi),rangi)
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
+			formati = "position.txt"
+			yozish = chat_id + formati
+			with open(yozish,'w') as yoz:
+				yoz.write(call.data)
+		elif call.data == "past_ong":
+			past_ong(call,matn,turi,int(hajmi),rangi)
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=gen_markup())
+			formati = "position.txt"
+			yozish = chat_id + formati
+			with open(yozish,'w') as yoz:
+				yoz.write(call.data)
+		elif call.data == "home":
+			image = open(str(chat_id)+'water.jpg', 'rb')
+			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=rasm())
+		except:
+			pass
 		
 bot.enable_save_next_step_handlers(delay=2)
 bot.polling(none_stop=True)
