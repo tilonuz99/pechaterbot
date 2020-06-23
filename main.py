@@ -256,8 +256,8 @@ def callback_query(call):
 		elif call.data == "home":
 			image = open(str(chat_id)+'water.jpg', 'rb')
 			bot.edit_message_media(media=types.InputMedia(type='photo', media=image),chat_id=call.message.chat.id,message_id=call.message.message_id,reply_markup=rasm())
-		except:
-			pass
+	except:
+		pass
 		
 bot.enable_save_next_step_handlers(delay=2)
 bot.polling(none_stop=True)
